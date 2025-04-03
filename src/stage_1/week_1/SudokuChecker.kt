@@ -2,6 +2,7 @@ package stage_1.week_1
 
 import kotlin.math.sqrt
 
+
 fun isValidSudoku(grid: List<List<Char>>): Boolean {
     val size = grid.size
     val subgridSize = sqrt(size.toDouble()).toInt()
