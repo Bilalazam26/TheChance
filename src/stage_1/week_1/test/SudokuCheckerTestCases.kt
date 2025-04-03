@@ -19,17 +19,18 @@ import stage_1.week_1.isValidSudoku
 //drawbacks of the first representation:
 //in 16 * 16 grid the needs to numbers that exceeds one digit comes out
 //This make it hard to split the string (row) into solo cells
+
 fun main() {
     val checker = SudokuCheckerTestCases()
     println(checker.valid9SudokuTestCase())
-    println(checker.duplicateRow9SudokuTestCase())
-    println(checker.duplicateCol9SudokuTestCase())
-    println(checker.duplicateSubgrid9SudokuTestCase())
+    println(!checker.duplicateRow9SudokuTestCase())
+    println(!checker.duplicateCol9SudokuTestCase())
+    println(!checker.duplicateSubgrid9SudokuTestCase())
     println(checker.emptySudokuTestCase())
     println(checker.valid4SudokuTestCase())
-    println(checker.invalid4SudokuTestCase())
+    println(!checker.invalid4SudokuTestCase())
     println(checker.valid16SudokuTestCase())
-    println(checker.inValid16SudokuTestCase())
+    println(!checker.inValid16SudokuTestCase())
 
 }
 
