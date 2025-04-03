@@ -6,7 +6,14 @@ import stage_1.week_1.isValidSudoku
 
 //sudoku grid possible representations:
 //1. list of strings and each string represents a row
-//2. list of lists (used)
+//2. 2d Array (list of lists) -> used
+
+//drawbacks of the first representation:
+//in 16 * 16 grid the needs to numbers that exceeds one digit comes out
+//This make it hard to split the string (row) into solo cells
+
+// solution :
+// represent 10 -> 16 as capital A -> G
 
 /*
 * Test case scenarios:
@@ -15,10 +22,6 @@ import stage_1.week_1.isValidSudoku
 * 3. duplicate in column
 * 4. duplicate in a subgrid
 */
-
-//drawbacks of the first representation:
-//in 16 * 16 grid the needs to numbers that exceeds one digit comes out
-//This make it hard to split the string (row) into solo cells
 
 fun main() {
     val checker = SudokuCheckerTestCases()
@@ -52,35 +55,40 @@ class SudokuCheckerTestCases {
         return isValidSudoku(valid9SudokuTestCase)
     }
 
+    fun emptySudokuTestCase(): Boolean {
+        val emptySudokuTestCase = List(9) { List(9) { '-' } } // Empty Sudoku
+        return isValidSudoku(emptySudokuTestCase)
+    }
+
     fun duplicateRow9SudokuTestCase(): Boolean {
-        //duplicate 3 in the first row
+        //duplicate 4 in the first row
         val duplicateRow9SudokuTestCase = listOf(
-            listOf('5', '3', '3', '-', '7', '-', '-', '-', '-'),
-            listOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
-            listOf('-', '9', '8', '-', '-', '-', '-', '6', '-'),
-            listOf('8', '-', '-', '-', '6', '-', '-', '-', '3'),
-            listOf('4', '-', '-', '8', '-', '3', '-', '-', '1'),
-            listOf('7', '-', '-', '-', '2', '-', '-', '-', '6'),
-            listOf('-', '6', '-', '-', '-', '-', '2', '8', '-'),
-            listOf('-', '-', '-', '4', '1', '9', '-', '-', '5'),
-            listOf('-', '-', '-', '-', '8', '-', '-', '7', '9')
+            listOf('3', '4', '1', '-', '5', '-', '-', '4', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-')
         )
         return isValidSudoku(duplicateRow9SudokuTestCase)
     }
 
     fun duplicateCol9SudokuTestCase(): Boolean {
 
-        //duplicate 5 in the first column
+        //duplicate 7 in the first column
         val duplicateRow9SudokuTestCase = listOf(
-            listOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
-            listOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
-            listOf('-', '9', '8', '-', '-', '-', '-', '6', '-'),
-            listOf('8', '-', '-', '-', '6', '-', '-', '-', '3'),
-            listOf('4', '-', '-', '8', '-', '3', '-', '-', '1'),
-            listOf('7', '-', '-', '-', '2', '-', '-', '-', '6'),
-            listOf('5', '6', '-', '-', '-', '-', '2', '8', '-'),
-            listOf('-', '-', '-', '4', '1', '9', '-', '-', '5'),
-            listOf('-', '-', '-', '-', '8', '-', '-', '7', '9')
+            listOf('7', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('4', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('2', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('8', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('4', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('7', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('5', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-')
         )
         return isValidSudoku(duplicateRow9SudokuTestCase)
     }
@@ -88,22 +96,17 @@ class SudokuCheckerTestCases {
     fun duplicateSubgrid9SudokuTestCase(): Boolean {
         //duplicate 5 in the subgrid starting im [0,0]
         val duplicateSubgrid9SudokuTestCase = listOf(
-            listOf('5', '3', '5', '-', '7', '-', '-', '-', '-'),
-            listOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
-            listOf('-', '9', '8', '-', '-', '-', '-', '6', '-'),
-            listOf('8', '-', '-', '5', '6', '-', '-', '-', '3'),
-            listOf('4', '-', '-', '8', '-', '3', '-', '-', '1'),
-            listOf('7', '-', '5', '-', '2', '-', '-', '-', '6'),
-            listOf('-', '6', '-', '-', '-', '-', '2', '8', '-'),
-            listOf('-', '-', '-', '4', '1', '9', '-', '-', '5'),
-            listOf('-', '-', '-', '-', '8', '-', '-', '7', '9')
+            listOf('5', '3', '5', '-', '-', '-', '-', '-', '-'),
+            listOf('6', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '7', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-'),
+            listOf('-', '-', '-', '-', '-', '-', '-', '-', '-')
         )
         return isValidSudoku(duplicateSubgrid9SudokuTestCase)
-    }
-
-    fun emptySudokuTestCase(): Boolean {
-        val emptySudokuTestCase = List(9) { List(9) { '-' } } // Empty Sudoku
-        return isValidSudoku(emptySudokuTestCase)
     }
 
     fun valid4SudokuTestCase(): Boolean {
@@ -158,7 +161,8 @@ class SudokuCheckerTestCases {
         return isValidSudoku(inValid16SudokuTestCase)
     }
 
-    //1, 2, 3
-    //G, 1, 2
+    //1, 2, 3, 4, 5
+    //G, 1, 2, 3, 4
+    //F, G, 1, 2, 3
 
 }
