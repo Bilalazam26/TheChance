@@ -4,15 +4,12 @@ import stage_1.week_1.isValidIPv4
 
 fun main() {
     //valid
-
     val valid1 = "192.168.1.1"
     val valid2 = "0.0.0.0"
     val valid3 = "255.255.255.255"
     val valid4 = "1.2.3.4"
 
-
     //invalid
-
     val invalid1 = "256.100.100.100"
     val invalid2 = "192.168.1"
     val invalid3 = "192.168.1.1.1"
