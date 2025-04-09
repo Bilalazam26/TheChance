@@ -10,9 +10,9 @@ validation process:
     - check that the integer value of the segment is in range 0..255
     - check if there is any leading zeros -> "012" X
 */
+
 fun isValidIPv4(address: String): Boolean {
-    // Split by '.' and check if we get exactly 4 segments
-    val segments = address.split(".")
+    val segments = address.split(".")// Split by '.' and check if we get exactly 4 segments
     if (segments.size != 4) return false
 
     for (part in segments) {
@@ -26,6 +26,5 @@ fun isValidIPv4(address: String): Boolean {
         // Check for leading zeros (except "0" itself)
         if (part.length > 1 && part.startsWith("0")) return false
     }
-
     return true
 }

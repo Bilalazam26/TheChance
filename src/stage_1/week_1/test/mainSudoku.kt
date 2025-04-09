@@ -3,25 +3,6 @@ package stage_1.week_1.test
 import stage_1.week_1.isValidSudoku
 
 
-//sudoku grid possible representations:
-//1. list of strings and each string represents a row
-//2. 2d Array (list of lists) -> used
-
-//drawbacks of the first representation:
-//in 16 * 16 grid the needs to numbers that exceeds one digit comes out
-//This make it hard to split the string (row) into solo cells
-
-// solution :
-// represent 10 -> 16 as capital A -> G
-
-/*
-* Test case scenarios:
-* 1. valid
-* 2. duplicate in row
-* 3. duplicate in column
-* 4. duplicate in a subgrid
-*/
-
 val valid9SudokuTestCase = listOf(
     listOf('5', '3', '-', '-', '7', '-', '-', '-', '-'),
     listOf('6', '-', '-', '1', '9', '5', '-', '-', '-'),
@@ -172,7 +153,7 @@ fun checkSudoku(name: String, grid: List<List<Char>>, expected: Boolean) {
     println("$name:")
     println(
         if (isValidSudoku(grid) == expected) {
-            "success\n"
+            "passed\n"
         } else {
             "failed\n"
         }

@@ -65,6 +65,11 @@ fun main() {
         address = " 192.168.1.1",
         expected = false
     )
+    checkIPV4(
+        name = "invalid IPV4 address special char",
+        address = "192.168.1.#",
+        expected = false
+    )
 
 
 
@@ -74,7 +79,7 @@ fun checkIPV4(name: String, address: String, expected: Boolean) {
     println("$name:")
     println(
         if (isValidIPv4(address) == expected) {
-            "success\n"
+            "passed\n"
         } else {
             "failed\n"
         }
